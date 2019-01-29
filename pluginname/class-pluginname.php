@@ -166,14 +166,14 @@ class Pluginname {
 				if ( 'integer' === $validator && ! preg_match( '#^[0-9]+$#', $value ) ) {
 					do_action(
 						'error',
-						'<p>' . sprintf( __( '%s was not saved because it is not a valid number' ), $name ) . '</p>'
+						'<p>' . sprintf( __( '%s was not saved because it is not a valid number', 'pluginname' ), $name ) . '</p>'
 					);
 
 					return true;
 				} elseif ( 'float' === $validator && ! preg_match( '#^[0-9.]+$#', $value ) ) {
 					do_action(
 						'error',
-						'<p>' . sprintf( __( '%s was not saved because it is not a valid float' ), $name ) . '</p>'
+						'<p>' . sprintf( __( '%s was not saved because it is not a valid float', 'pluginname' ), $name ) . '</p>'
 					);
 
 					return true;
