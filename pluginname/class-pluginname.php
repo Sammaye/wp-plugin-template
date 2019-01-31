@@ -128,7 +128,7 @@ class Pluginname {
 	}
 
 	public function load_plugin_textdomain() {
-		load_plugin_textdomain( 'pluginname', false, basename( dirname( __FILE__ ) ) . '/languages/' );
+		load_plugin_textdomain( 'pluginname', false, plugin_dir_path( __FILE__ ) . 'languages/' );
 	}
 
 	public function run() {
