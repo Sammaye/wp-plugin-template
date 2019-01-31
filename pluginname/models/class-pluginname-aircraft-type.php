@@ -7,9 +7,9 @@ class Pluginname_Aircraft_Type {
 			apply_filters( 'pluginname_id', 'aircraft' ),
 			[
 				'labels'       => [
-					'name'          => __( 'Aircraft Types', 'pluginname' ),
-					'singular_name' => __( 'Aircraft Type', 'pluginname' ),
-					'menu_name'     => __( 'Categories', 'pluginname' ),
+					'name'          => esc_html__( 'Aircraft Types', 'pluginname' ),
+					'singular_name' => esc_html__( 'Aircraft Type', 'pluginname' ),
+					'menu_name'     => esc_html__( 'Categories', 'pluginname' ),
 				],
 				'hierarchical' => true,
 				'rewrite'      => array( 'slug' => 'aircraft-categories' ),
@@ -22,7 +22,7 @@ class Pluginname_Aircraft_Type {
 	public function metabox() {
 		$box = new_cmb2_box( [
 			'id'           => apply_filters( 'pluginname_id', 'aircraft_type_metabox' ),
-			'title'        => __( 'Extra Fields', 'pluginname' ),
+			'title'        => esc_html__( 'Extra Fields', 'pluginname' ),
 			'object_types' => [ 'term' ],
 			'taxonomies'   => [ apply_filters( 'pluginname_id', 'aircraft_type' ) ],
 			'context'      => 'normal',
@@ -31,7 +31,7 @@ class Pluginname_Aircraft_Type {
 		] );
 
 		$box->add_field( [
-			'name'    => __( 'Banner Image', 'pluginname' ),
+			'name'    => esc_html__( 'Banner Image', 'pluginname' ),
 			'id'      => apply_filters( 'pluginname_id', 'image' ),
 			'type'    => 'file',
 			'options' => [

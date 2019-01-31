@@ -7,9 +7,9 @@ class Pluginname_Contact {
 			apply_filters( 'pluginname_id', 'contact' ),
 			[
 				'labels'      => [
-					'name'          => __( 'Contacts', 'pluginname' ),
-					'singular_name' => __( 'Contact', 'pluginname' ),
-					'add_new_item'  => __( 'Add Contact', 'pluginname' ),
+					'name'          => esc_html__( 'Contacts', 'pluginname' ),
+					'singular_name' => esc_html__( 'Contact', 'pluginname' ),
+					'add_new_item'  => esc_html__( 'Add Contact', 'pluginname' ),
 				],
 				'public'      => true,
 				'has_archive' => false,
@@ -73,7 +73,7 @@ class Pluginname_Contact {
 	public function metabox() {
 		$box = new_cmb2_box( [
 			'id'           => apply_filters( 'pluginname_id', 'contact_metabox' ),
-			'title'        => __( 'Details', 'pluginname' ),
+			'title'        => esc_html__( 'Details', 'pluginname' ),
 			'object_types' => [ apply_filters( 'pluginname_id', 'contact' ) ],
 			// Post type
 			'context'      => 'normal',
@@ -85,11 +85,11 @@ class Pluginname_Contact {
 
 		$title_options = [];
 		foreach ( Pluginname::title_list() as $k => $v ) {
-			$title_options[ $v ] = __( $v );
+			$title_options[ $v ] = esc_html__( $v );
 		}
 
 		$box->add_field( [
-			'name'             => __( 'Title', 'pluginname' ),
+			'name'             => esc_html__( 'Title', 'pluginname' ),
 			'id'               => apply_filters( 'pluginname_id', 'title' ),
 			'type'             => 'select',
 			'show_option_none' => true,
@@ -98,36 +98,36 @@ class Pluginname_Contact {
 		] );
 
 		$box->add_field( [
-			'name' => __( 'Name', 'pluginname' ),
+			'name' => esc_html__( 'Name', 'pluginname' ),
 			'id'   => apply_filters( 'pluginname_id', 'name' ),
 			'type' => 'text',
 		] );
 
 		$box->add_field( [
-			'name' => __( 'Company', 'pluginname' ),
+			'name' => esc_html__( 'Company', 'pluginname' ),
 			'id'   => apply_filters( 'pluginname_id', 'company' ),
 			'type' => 'text',
 		] );
 
 		$box->add_field( [
-			'name' => __( 'Phone Number', 'pluginname' ),
+			'name' => esc_html__( 'Phone Number', 'pluginname' ),
 			'id'   => apply_filters( 'pluginname_id', 'phone' ),
 			'type' => 'text',
 		] );
 
 		$box->add_field( [
-			'name' => __( 'Email Address', 'pluginname' ),
+			'name' => esc_html__( 'Email Address', 'pluginname' ),
 			'id'   => apply_filters( 'pluginname_id', 'email' ),
 			'type' => 'text_email',
 		] );
 
 		$country_options = [];
 		foreach ( Pluginname::country_list() as $k => $v ) {
-			$country_options[ $v['code'] ] = __( $v['name'] );
+			$country_options[ $v['code'] ] = esc_html__( $v['name'] );
 		}
 
 		$box->add_field( [
-			'name'             => __( 'Country' ),
+			'name'             => esc_html__( 'Country' ),
 			'id'               => apply_filters( 'pluginname_id', 'country' ),
 			'type'             => 'select',
 			'show_option_none' => true,
@@ -136,19 +136,19 @@ class Pluginname_Contact {
 		] );
 
 		$box->add_field( [
-			'name' => __( 'Departure Airport' ),
+			'name' => esc_html__( 'Departure Airport' ),
 			'id'   => apply_filters( 'pluginname_id', 'departure_airport' ),
 			'type' => 'text',
 		] );
 
 		$group_field_id = $box->add_field( [
 			'id'         => apply_filters( 'pluginname_id', 'arrival_airport' ),
-			'name'       => __( 'Arrival Airport', 'pluginname' ),
+			'name'       => esc_html__( 'Arrival Airport', 'pluginname' ),
 			'type'       => 'group',
 			'options'    => [
-				'group_title'   => __( 'Arrival Airport/Leg Name {#}', 'pluginname' ),
-				'add_button'    => __( 'Add Another Leg', 'pluginname' ),
-				'remove_button' => __( 'Remove Leg', 'pluginname' ),
+				'group_title'   => esc_html__( 'Arrival Airport/Leg Name {#}', 'pluginname' ),
+				'add_button'    => esc_html__( 'Add Another Leg', 'pluginname' ),
+				'remove_button' => esc_html__( 'Remove Leg', 'pluginname' ),
 				'sortable'      => true,
 			],
 			'test_field' => true,
@@ -160,7 +160,7 @@ class Pluginname_Contact {
 		] );
 
 		$box->add_field( [
-			'name'         => __( 'Departure Date' ),
+			'name'         => esc_html__( 'Departure Date' ),
 			'id'           => apply_filters( 'pluginname_id', 'departure_date' ),
 			'object_types' => [ apply_filters( 'pluginname_id', 'contact' ) ],
 			'type'         => 'text_date_timestamp',
@@ -168,7 +168,7 @@ class Pluginname_Contact {
 		] );
 
 		$box->add_field( [
-			'name'         => __( 'Return Date' ),
+			'name'         => esc_html__( 'Return Date' ),
 			'id'           => apply_filters( 'pluginname_id', 'return_date' ),
 			'object_types' => [ apply_filters( 'pluginname_id', 'contact' ) ],
 			'type'         => 'text_date_timestamp',
@@ -176,7 +176,7 @@ class Pluginname_Contact {
 		] );
 
 		$box->add_field( [
-			'name'         => __( 'Nunber of Passengers' ),
+			'name'         => esc_html__( 'Nunber of Passengers' ),
 			'id'           => apply_filters( 'pluginname_id', 'passenger_number' ),
 			'object_types' => [ apply_filters( 'pluginname_id', 'contact' ) ],
 			'type'         => 'text_small',
@@ -187,7 +187,7 @@ class Pluginname_Contact {
 			$type_options[ $v ] = $v;
 		}
 		$box->add_field( [
-			'name'             => __( 'Aircraft Type' ),
+			'name'             => esc_html__( 'Aircraft Type' ),
 			'id'               => apply_filters( 'pluginname_id', 'aircraft_type' ),
 			'object_types'     => [ apply_filters( 'pluginname_id', 'contact' ) ],
 			'type'             => 'select',
@@ -198,10 +198,10 @@ class Pluginname_Contact {
 
 		$trip_options = [];
 		foreach ( Pluginname::trip_type_list() as $k => $v ) {
-			$trip_options[ $v ] = __( $v );
+			$trip_options[ $v ] = esc_html__( $v );
 		}
 		$box->add_field( [
-			'name'             => __( 'Trip Type' ),
+			'name'             => esc_html__( 'Trip Type' ),
 			'id'               => apply_filters( 'pluginname_id', 'trip_type' ),
 			'object_types'     => [ apply_filters( 'pluginname_id', 'contact' ) ],
 			'type'             => 'select',
@@ -216,15 +216,15 @@ class Pluginname_Contact {
 
 		$columns = [
 			'cb'                => '<input type="checkbox" />',
-			'id'                => __( 'ID' ),
-			'name'              => __( 'Name' ),
-			'company'           => __( 'Company' ),
-			'email'             => __( 'Email Address' ),
-			'departure_date'    => __( 'Departure Date' ),
-			'return_date'       => __( 'Return Date' ),
-			'departure_airport' => __( 'Departure Airport' ),
-			'arrival_airport'   => __( 'Arrival Airport' ),
-			'date'              => __( 'Date' ),
+			'id'                => esc_html__( 'ID' ),
+			'name'              => esc_html__( 'Name' ),
+			'company'           => esc_html__( 'Company' ),
+			'email'             => esc_html__( 'Email Address' ),
+			'departure_date'    => esc_html__( 'Departure Date' ),
+			'return_date'       => esc_html__( 'Return Date' ),
+			'departure_airport' => esc_html__( 'Departure Airport' ),
+			'arrival_airport'   => esc_html__( 'Arrival Airport' ),
+			'date'              => esc_html__( 'Date' ),
 		];
 
 		return $columns;
@@ -240,20 +240,20 @@ class Pluginname_Contact {
 			$value = get_post_meta( $post_id,
 				apply_filters( 'pluginname_id', $column ), true );
 			if ( empty( $value ) ) {
-				echo __( 'No Value' );
+				echo esc_html__( 'No Value' );
 			} elseif ( is_array( $value ) && 'arrival_airport' === $column ) {
 				$airports = [];
 				foreach ( $value as $row ) {
 					$airports[] = $row[ apply_filters( 'pluginname_id',
 						'airport_name' ) ];
 				}
-				echo __( implode( ', ', $airports ) );
+				echo esc_html__( implode( ', ', $airports ) );
 			} elseif ( 'departure_date' === $column
 			           || 'return_date' === $column
 			) {
-				echo __( date( 'd/m/Y', $value ) );
+				echo esc_html__( date( 'd/m/Y', $value ) );
 			} else {
-				echo __( $value );
+				echo esc_html__( $value );
 			}
 		}
 	}
@@ -287,7 +287,7 @@ class Pluginname_Contact {
 		if ( count( $validate[0] ) > 0 ) {
 			echo json_encode( [
 				'success' => false,
-				'message' => __( 'Could not save your details', 'amdiraljet' ),
+				'message' => esc_html__( 'Could not save your details', 'amdiraljet' ),
 				'errors'  => $validate[0],
 			] );
 		} else {
@@ -327,15 +327,15 @@ class Pluginname_Contact {
 				echo json_encode( [
 					'success' => true,
 					'message' =>
-						__( 'Thank you for contacting Plugin Name. We will get back to you as soon as possible',
+						esc_html__( 'Thank you for contacting Plugin Name. We will get back to you as soon as possible',
 							'pluginname' ),
 				] );
 			} else {
 				echo json_encode( [
 					'success' => false,
-					'message' => __( 'Could not save your details', 'pluginname' ),
+					'message' => esc_html__( 'Could not save your details', 'pluginname' ),
 					'errors'  => [
-						__( 'An unkown error, the data could not be saved',
+						esc_html__( 'An unkown error, the data could not be saved',
 							'pluginname' ),
 					],
 				] );
@@ -352,7 +352,7 @@ class Pluginname_Contact {
 		if ( count( $validate[0] ) > 0 ) {
 			echo json_encode( [
 				'success' => false,
-				'message' => __( 'Could not save your details', 'pluginname' ),
+				'message' => esc_html__( 'Could not save your details', 'pluginname' ),
 				'errors'  => $validate[0],
 			] );
 		} else {
@@ -425,15 +425,15 @@ class Pluginname_Contact {
 				echo json_encode( [
 					'success' => true,
 					'message' =>
-						__( 'Thank you for enquiring with Plugin Name. We will get back to you as soon as possible',
+						esc_html__( 'Thank you for enquiring with Plugin Name. We will get back to you as soon as possible',
 							'pluginname' ),
 				] );
 			} else {
 				echo json_encode( [
 					'success' => false,
-					'message' => __( 'Could not save your details' ),
+					'message' => esc_html__( 'Could not save your details' ),
 					'errors'  => [
-						__( 'An unkown error, the data could not be saved',
+						esc_html__( 'An unkown error, the data could not be saved',
 							'pluginname' ),
 					],
 				] );
@@ -469,7 +469,7 @@ class Pluginname_Contact {
 				|| ! $fields['message']
 			)
 		) {
-			$errors[] = __( 'Title, Name, Email, and Message are required',
+			$errors[] = esc_html__( 'Title, Name, Email, and Message are required',
 				'pluginname' );
 		}
 
@@ -484,7 +484,7 @@ class Pluginname_Contact {
 				|| ! $fields['passengers']
 			)
 		) {
-			$errors[] = __( 'Title, Name, Email, Trip Type, Aircraft Type, Departure Date, 
+			$errors[] = esc_html__( 'Title, Name, Email, Trip Type, Aircraft Type, Departure Date, 
             Departure Airport, and Number of Passengers are required',
 				'pluginname' );
 		}
@@ -510,14 +510,14 @@ class Pluginname_Contact {
 				$field === 'title'
 				&& ! in_array( $value, Pluginname::title_list(), true )
 			) {
-				$errors[] = __( 'Title must be a value within the provided list',
+				$errors[] = esc_html__( 'Title must be a value within the provided list',
 					'pluginname' );
 			}
 
 			if (
 				$field === 'email' && ! is_email( $value )
 			) {
-				$errors[] = __( 'You must enter a valid email to contact us',
+				$errors[] = esc_html__( 'You must enter a valid email to contact us',
 					'pluginname' );
 			}
 
@@ -525,7 +525,7 @@ class Pluginname_Contact {
 				$field === 'country' && ! in_array( $value, $countries, true )
 			) {
 				$errors[]
-					= __( 'Country must be a value within the provided list',
+					= esc_html__( 'Country must be a value within the provided list',
 					'pluginname' );
 			}
 
@@ -534,7 +534,7 @@ class Pluginname_Contact {
 				&& ! in_array( $value, Pluginname::trip_type_list() )
 			) {
 				$errors[]
-					= __( 'Trip Type must be a value within the provided list',
+					= esc_html__( 'Trip Type must be a value within the provided list',
 					'pluginname' );
 			}
 
@@ -543,7 +543,7 @@ class Pluginname_Contact {
 				&& ! in_array( $value, Pluginname::aircraft_type_list() )
 			) {
 				$errors[]
-					= __( 'Aircraft Type must be a value within the provided list',
+					= esc_html__( 'Aircraft Type must be a value within the provided list',
 					'pluginname' );
 			}
 
@@ -555,7 +555,7 @@ class Pluginname_Contact {
 					   < time()
 				)
 			) {
-				$errors[] = __( 'Departure Date must be valid and in the future',
+				$errors[] = esc_html__( 'Departure Date must be valid and in the future',
 					'pluginname' );
 			}
 
@@ -567,7 +567,7 @@ class Pluginname_Contact {
 					   < time()
 				)
 			) {
-				$errors[] = __( 'Return Date must be valid and in the future',
+				$errors[] = esc_html__( 'Return Date must be valid and in the future',
 					'pluginname' );
 			}
 
@@ -579,13 +579,13 @@ class Pluginname_Contact {
 					[ 'min_range' => 0, 'max_range' => 100 ]
 				)
 			) {
-				$errors[] = __( 'Enter a valid number of passengers',
+				$errors[] = esc_html__( 'Enter a valid number of passengers',
 					'pluginname' );
 			}
 
 			if ( $field === 'arrival_airport' ) {
 				if ( ! is_array( $value ) || count( $value ) <= 0 ) {
-					$errors[] = __( 'Arrival Airport is not a valid value',
+					$errors[] = esc_html__( 'Arrival Airport is not a valid value',
 						'pluginname' );
 				} else {
 					foreach ( $value as $k => $v ) {

@@ -6,9 +6,9 @@ class Pluginname_Aircraft {
 			apply_filters( 'pluginname_id', 'aircraft' ),
 			[
 				'labels'      => [
-					'name'          => __( 'Aircraft', 'pluginname' ),
-					'singular_name' => __( 'Aircraft', 'pluginname' ),
-					'add_new_item'  => __( 'Add Aircraft', 'pluginname' )
+					'name'          => esc_html__( 'Aircraft', 'pluginname' ),
+					'singular_name' => esc_html__( 'Aircraft', 'pluginname' ),
+					'add_new_item'  => esc_html__( 'Add Aircraft', 'pluginname' )
 				],
 				'public'      => true,
 				'has_archive' => true,
@@ -74,7 +74,7 @@ SQL;
 	public function metabox() {
 		$box = new_cmb2_box( [
 			'id'           => apply_filters( 'pluginname_id', 'aircraft_metabox' ),
-			'title'        => __( 'Specifications', 'pluginname' ),
+			'title'        => esc_html__( 'Specifications', 'pluginname' ),
 			'object_types' => [ apply_filters( 'pluginname_id', 'aircraft' ) ],
 			'context'      => 'normal',
 			'priority'     => 'high',
@@ -82,74 +82,74 @@ SQL;
 		] );
 
 		$box->add_field( [
-			'name'   => __( 'Seats', 'pluginname' ),
+			'name'   => esc_html__( 'Seats', 'pluginname' ),
 			'id'     => apply_filters( 'pluginname_id', 'seats' ),
 			'filter' => 'integer',
 			'type'   => 'text_small'
 		] );
 		$box->add_field( [
-			'name'   => __( 'Speed', 'pluginname' ),
+			'name'   => esc_html__( 'Speed', 'pluginname' ),
 			'id'     => apply_filters( 'pluginname_id', 'speed' ),
 			'filter' => 'integer',
 			'type'   => 'text_small'
 		] );
 		$box->add_field( [
-			'name'   => __( 'Range', 'pluginname' ),
+			'name'   => esc_html__( 'Range', 'pluginname' ),
 			'id'     => apply_filters( 'pluginname_id', 'range' ),
 			'filter' => 'integer',
 			'type'   => 'text_small'
 		] );
 		$box->add_field( [
-			'name'   => __( 'Cabin Height', 'pluginname' ),
+			'name'   => esc_html__( 'Cabin Height', 'pluginname' ),
 			'id'     => apply_filters( 'pluginname_id', 'cabin_height' ),
 			'filter' => 'float',
 			'type'   => 'text_small'
 		] );
 		$box->add_field( [
-			'name'   => __( 'Cabin Width', 'pluginname' ),
+			'name'   => esc_html__( 'Cabin Width', 'pluginname' ),
 			'id'     => apply_filters( 'pluginname_id', 'cabin_width' ),
 			'filter' => 'float',
 			'type'   => 'text_small'
 		] );
 		$box->add_field( [
-			'name'   => __( 'Luggage Space', 'pluginname' ),
+			'name'   => esc_html__( 'Luggage Space', 'pluginname' ),
 			'id'     => apply_filters( 'pluginname_id', 'space' ),
 			'filter' => 'float',
 			'type'   => 'text_small'
 		] );
 		$box->add_field( [
-			'name'           => __( 'Layout Image', 'pluginname' ),
-			'desc'           => __( 'Upload an image or enter an URL.', 'pluginname' ),
+			'name'           => esc_html__( 'Layout Image', 'pluginname' ),
+			'desc'           => esc_html__( 'Upload an image or enter an URL.', 'pluginname' ),
 			'id'             => apply_filters( 'pluginname_id', 'layout_image' ),
 			'type'           => 'file',
 			'options'        => [
 				'url' => false,
 			],
 			'text'           => [
-				'add_upload_file_text' => __( 'Add File', 'pluginname' )
+				'add_upload_file_text' => esc_html__( 'Add File', 'pluginname' )
 			],
 			'list_attribute' => false
 		] );
 		$box->add_field( [
-			'name'           => __( 'Aircraft Gallery', 'pluginname' ),
+			'name'           => esc_html__( 'Aircraft Gallery', 'pluginname' ),
 			'id'             => apply_filters( 'pluginname_id', 'images' ),
 			'type'           => 'file_list',
 			'list_attribute' => false
 		] );
 		$group_field_id = $box->add_field( [
 			'id'          => apply_filters( 'pluginname_id', 'market_points' ),
-			'name'        => __( 'Marketing Points', 'pluginname' ),
+			'name'        => esc_html__( 'Marketing Points', 'pluginname' ),
 			'type'        => 'group',
-			'description' => __( 'Custom little marketing points', 'pluginname' ),
+			'description' => esc_html__( 'Custom little marketing points', 'pluginname' ),
 			'options'     => [
-				'group_title'   => __( 'Point {#}', 'pluginname' ),
-				'add_button'    => __( 'Add Another Point', 'pluginname' ),
-				'remove_button' => __( 'Remove Point', 'pluginname' ),
+				'group_title'   => esc_html__( 'Point {#}', 'pluginname' ),
+				'add_button'    => esc_html__( 'Add Another Point', 'pluginname' ),
+				'remove_button' => esc_html__( 'Remove Point', 'pluginname' ),
 				'sortable'      => true,
 			],
 		] );
 		$box->add_group_field( $group_field_id, [
-			'name' => __( 'Marketing Point', 'pluginname' ),
+			'name' => esc_html__( 'Marketing Point', 'pluginname' ),
 			'id'   => apply_filters( 'pluginname_id', 'market_point' ),
 			'type' => 'text',
 		] );
@@ -159,9 +159,9 @@ SQL;
 
 		$columns = [
 			'cb'   => '<input type="checkbox" />',
-			'id'   => __( 'ID', 'pluginname' ),
-			'cat'  => __( 'Category', 'pluginname' ),
-			'date' => __( 'Date', 'pluginname' )
+			'id'   => esc_html__( 'ID', 'pluginname' ),
+			'cat'  => esc_html__( 'Category', 'pluginname' ),
+			'date' => esc_html__( 'Date', 'pluginname' )
 		];
 
 		return $columns;
@@ -180,16 +180,16 @@ SQL;
 			}
 
 			if ( count( $terms ) <= 0 ) {
-				echo __( 'No Value' );
+				echo esc_html__( 'No Value' );
 			} else {
-				echo __( implode( ', ', $terms ) );
+				echo esc_html__( implode( ', ', $terms ) );
 			}
 		} else {
 			$value = get_post_meta( $post_id, apply_filters( 'pluginname_id', $column ), true );
 			if ( empty( $value ) ) {
-				echo __( 'No Value' );
+				echo esc_html__( 'No Value' );
 			} else {
-				echo __( $value );
+				echo esc_html__( $value );
 			}
 		}
 	}

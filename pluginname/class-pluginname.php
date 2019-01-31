@@ -127,7 +127,13 @@ class Pluginname {
 		add_action( 'init', [ $this, 'run' ] );
 	}
 
+	public function load_plugin_textdomain() {
+		load_plugin_textdomain( 'pluginname', false, basename( dirname( __FILE__ ) ) . '/languages/' );
+	}
+
 	public function run() {
+
+		add_action( 'plugins_loaded', [ $this, 'load_plugin_textdomain' ] );
 
 		// Let's setup our data model
 
@@ -166,14 +172,14 @@ class Pluginname {
 				if ( 'integer' === $validator && ! preg_match( '#^[0-9]+$#', $value ) ) {
 					do_action(
 						'error',
-						'<p>' . sprintf( __( '%s was not saved because it is not a valid number', 'pluginname' ), $name ) . '</p>'
+						'<p>' . sprintf( esc_html__( '%s was not saved because it is not a valid number', 'pluginname' ), $name ) . '</p>'
 					);
 
 					return true;
 				} elseif ( 'float' === $validator && ! preg_match( '#^[0-9.]+$#', $value ) ) {
 					do_action(
 						'error',
-						'<p>' . sprintf( __( '%s was not saved because it is not a valid float', 'pluginname' ), $name ) . '</p>'
+						'<p>' . sprintf( esc_html__( '%s was not saved because it is not a valid float', 'pluginname' ), $name ) . '</p>'
 					);
 
 					return true;
@@ -221,7 +227,7 @@ class Pluginname {
 		}
 
 		$content = sprintf(
-			__( 'Add some privacy stuff here.
+			esc_html__( 'Add some privacy stuff here.
 
 			<a href="%s" target="_blank">details click</a>', 'pluginname' ),
 			'https://example.com/privacy-policy'

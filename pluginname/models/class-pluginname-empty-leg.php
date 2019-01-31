@@ -7,9 +7,9 @@ class Pluginname_Empty_Leg {
 			apply_filters( 'pluginname_id', 'empty_leg' ),
 			[
 				'labels'      => [
-					'name'          => __( 'Empty Legs', 'pluginname' ),
-					'singular_name' => __( 'Empty Leg', 'pluginname' ),
-					'add_new_item'  => __( 'Add Empty Leg', 'pluginname' )
+					'name'          => esc_html__( 'Empty Legs', 'pluginname' ),
+					'singular_name' => esc_html__( 'Empty Leg', 'pluginname' ),
+					'add_new_item'  => esc_html__( 'Add Empty Leg', 'pluginname' )
 				],
 				'public'      => true,
 				'has_archive' => true,
@@ -59,7 +59,7 @@ class Pluginname_Empty_Leg {
 	public function metabox() {
 		$box = new_cmb2_box( [
 			'id'           => apply_filters( 'pluginname_id', 'empty_leg_metabox' ),
-			'title'        => __( 'Details', 'pluginname' ),
+			'title'        => esc_html__( 'Details', 'pluginname' ),
 			'object_types' => [ apply_filters( 'pluginname_id', 'empty_leg' ) ], // Post type
 			'context'      => 'normal',
 			'priority'     => 'high',
@@ -67,29 +67,29 @@ class Pluginname_Empty_Leg {
 		] );
 
 		$box->add_field( [
-			'name'        => __( 'From Date', 'pluginname' ),
+			'name'        => esc_html__( 'From Date', 'pluginname' ),
 			'id'          => apply_filters( 'pluginname_id', 'from_date' ),
 			'type'        => 'text_date_timestamp',
 			'date_format' => 'd/m/Y'
 		] );
 		$box->add_field( [
-			'name'        => __( 'To Date', 'pluginname' ),
+			'name'        => esc_html__( 'To Date', 'pluginname' ),
 			'id'          => apply_filters( 'pluginname_id', 'to_date' ),
 			'type'        => 'text_date_timestamp',
 			'date_format' => 'd/m/Y'
 		] );
 		$box->add_field( [
-			'name' => __( 'Departure Airport/City', 'pluginname' ),
+			'name' => esc_html__( 'Departure Airport/City', 'pluginname' ),
 			'id'   => apply_filters( 'pluginname_id', 'depart_airport' ),
 			'type' => 'text_small'
 		] );
 		$box->add_field( [
-			'name' => __( 'Arrival Airport/City', 'pluginname' ),
+			'name' => esc_html__( 'Arrival Airport/City', 'pluginname' ),
 			'id'   => apply_filters( 'pluginname_id', 'arrive_airport' ),
 			'type' => 'text_small'
 		] );
 		$box->add_field( [
-			'name' => __( 'Aircraft', 'amdiraljet' ),
+			'name' => esc_html__( 'Aircraft', 'amdiraljet' ),
 			'id'   => apply_filters( 'pluginname_id', 'e_leg_aircraft' ),
 			'type' => 'text_small'
 		] );
@@ -99,13 +99,13 @@ class Pluginname_Empty_Leg {
 
 		$columns = [
 			'cb'             => '<input type="checkbox" />',
-			'id'             => __( 'ID', 'pluginname' ),
-			'from_date'      => __( 'From Date', 'pluginname' ),
-			'to_date'        => __( 'To Date', 'pluginname' ),
-			'depart_airport' => __( 'Departure Airport/City', 'pluginname' ),
-			'arrive_airport' => __( 'Arrival Airport/City', 'pluginname' ),
-			'e_leg_aircraft' => __( 'Aircraft', 'pluginname' ),
-			'date'           => __( 'Date', 'pluginname' )
+			'id'             => esc_html__( 'ID', 'pluginname' ),
+			'from_date'      => esc_html__( 'From Date', 'pluginname' ),
+			'to_date'        => esc_html__( 'To Date', 'pluginname' ),
+			'depart_airport' => esc_html__( 'Departure Airport/City', 'pluginname' ),
+			'arrive_airport' => esc_html__( 'Arrival Airport/City', 'pluginname' ),
+			'e_leg_aircraft' => esc_html__( 'Aircraft', 'pluginname' ),
+			'date'           => esc_html__( 'Date', 'pluginname' )
 		];
 
 		return $columns;
@@ -119,16 +119,16 @@ class Pluginname_Empty_Leg {
 		} elseif ( $column == 'from_date' || $column == 'to_date' ) {
 			$value = get_post_meta( $post_id, apply_filters( 'pluginname_id', $column ), true );
 			if ( empty( $value ) ) {
-				echo __( 'No Value' );
+				echo esc_html__( 'No Value' );
 			} else {
-				echo __( date( 'd/m/Y', $value ) );
+				echo esc_html__( date( 'd/m/Y', $value ) );
 			}
 		} else {
 			$value = get_post_meta( $post_id, apply_filters( 'pluginname_id', $column ), true );
 			if ( empty( $value ) ) {
-				echo __( 'No Value' );
+				echo esc_html__( 'No Value' );
 			} else {
-				echo __( $value );
+				echo esc_html__( $value );
 			}
 		}
 	}
